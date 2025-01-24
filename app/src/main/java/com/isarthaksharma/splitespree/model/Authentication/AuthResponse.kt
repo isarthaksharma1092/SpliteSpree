@@ -1,4 +1,4 @@
-package com.isarthaksharma.splitespree.model
+package com.isarthaksharma.splitespree.model.Authentication
 
 sealed interface AuthResponse {
     data object Success: AuthResponse

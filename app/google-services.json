@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "728256818085",
+    "project_id": "splitespree",
+    "storage_bucket": "splitespree.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728256818085:android:c21b6cc325e86e909b964c",
+        "android_client_info": {
+          "package_name": "com.isarthaksharma.splitespree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728256818085-ufrsgkjn4ie5crjrcnqmv8l4kgv6nljs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrwo1BTah313LWsWJzkDbjiAjwbN-ZBx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728256818085-ufrsgkjn4ie5crjrcnqmv8l4kgv6nljs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

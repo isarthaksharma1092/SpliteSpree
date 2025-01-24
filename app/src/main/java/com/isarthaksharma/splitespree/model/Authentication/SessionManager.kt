@@ -1,4 +1,4 @@
-package com.isarthaksharma.splitespree.model
+package com.isarthaksharma.splitespree.model.Authentication
 
 import android.content.Context
 import android.content.SharedPreferences

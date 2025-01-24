@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrainsKotlinSerialization)
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -86,6 +87,12 @@ dependencies {
     //Facebook Auth
     implementation ("com.facebook.android:facebook-login:17.0.2")
 
-    // preference data store
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
+    // room database
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+
 }

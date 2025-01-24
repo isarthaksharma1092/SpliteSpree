@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.sp
 import com.isarthaksharma.splitespree.ui_components.HorizontalLine
 import com.isarthaksharma.splitespree.ui_components.LoginOptionButton
 import com.isarthaksharma.splitespree.R
-import com.isarthaksharma.splitespree.model.AuthResponse
+import com.isarthaksharma.splitespree.model.Authentication.AuthResponse
 import com.isarthaksharma.splitespree.service.AuthenticationManager
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

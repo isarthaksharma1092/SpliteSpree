@@ -28,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -37,12 +38,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.isarthaksharma.splitespree.model.SpliteSpreeViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
+fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit,viewModel: SpliteSpreeViewModel) {
+    val selfExpense by viewModel.SelfLedgerList.observeAsState()
     var expenditureState by remember { mutableStateOf("") }
     var amountState by remember { mutableStateOf("") }
     var msgState by remember { mutableStateOf("") }
@@ -57,18 +62,19 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
         "${mCalendar.get(Calendar.DAY_OF_MONTH)}/${mCalendar.get(Calendar.MONTH) + 1}/${
             mCalendar.get(Calendar.YEAR)
         }"
-    val selectedDate: MutableState<String> = remember { mutableStateOf(currentDate) }
+    val selectedDate = remember { mutableStateOf(Date()) }
     mCalendar.time = Date()
 
     val datePickerDialog = DatePickerDialog(
         context,
         { _, year, month, dayOfMonth ->
-            selectedDate.value = "$dayOfMonth/${month + 1}/$year"
+            selectedDate.value = mCalendar.time
         },
         mCalendar.get(Calendar.YEAR),
         mCalendar.get(Calendar.MONTH),
         mCalendar.get(Calendar.DAY_OF_MONTH)
     )
+
 
 
 //*************************************************************************************************************************************************************
@@ -158,8 +164,9 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.padding(16.dp),
                 ) {
+                    val formattedDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate.value)
                     Text(
-                        text = selectedDate.value,
+                        text = formattedDate,
                         fontSize = 16.sp,
                         color = MaterialTheme.colorScheme.background
                     )
@@ -197,6 +204,7 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
 
                         // Action
                         else {
+                            viewModel.addExpense(expenditureState,amountState,msgState,selectedDate.value)
                             Toast.makeText(context, "Expense Save", Toast.LENGTH_SHORT).show()
                             onDismiss()
                         }

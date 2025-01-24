@@ -18,7 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.isarthaksharma.splitespree.model.SessionManager
+import com.isarthaksharma.splitespree.model.Authentication.SessionManager
 import com.isarthaksharma.splitespree.pages.*
 import com.isarthaksharma.splitespree.ui.theme.SpliteSpreeTheme
 
