@@ -42,6 +42,7 @@ android {
     }
 }
 
+//noinspection UseTomlInstead
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -74,18 +75,18 @@ dependencies {
 
     //Auth
     //Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
     implementation("com.google.firebase:firebase-auth")
     // Credentials
-    val credentials_Version = "1.5.0-beta01"
+    val credentials_Version = "1.5.0-rc01"
     implementation("androidx.credentials:credentials:$credentials_Version")
     implementation("androidx.credentials:credentials-play-services-auth:$credentials_Version")
     //Google Auth
     implementation ("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     //Facebook Auth
-    implementation ("com.facebook.android:facebook-login:17.0.2")
+    implementation ("com.facebook.android:facebook-login:18.0.0")
 
 
     // room database
