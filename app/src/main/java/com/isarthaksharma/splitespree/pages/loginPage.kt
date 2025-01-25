@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.facebook.CallbackManager
 import com.isarthaksharma.splitespree.R
 import com.isarthaksharma.splitespree.model.Authentication.AuthResponse
-import com.isarthaksharma.splitespree.service.AuthenticationManager
+import com.isarthaksharma.splitespree.model.Authentication.AuthenticationManager
 import com.isarthaksharma.splitespree.ui_components.HorizontalLine
 import com.isarthaksharma.splitespree.ui_components.LoginOptionButton
 import kotlinx.coroutines.flow.launchIn
@@ -55,9 +55,7 @@ import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
 @Composable
-fun LoginPage(
-    goToSignUpPage: () -> Unit,
-) {
+fun LoginPage(goToSignUpPage: () -> Unit) {
     // FOR INPUT
     var emailAddressState by remember { mutableStateOf("") }
     var passwordState by remember { mutableStateOf("") }

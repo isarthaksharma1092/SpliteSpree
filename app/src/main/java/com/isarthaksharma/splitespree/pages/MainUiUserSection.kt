@@ -50,7 +50,7 @@ fun MainUiUserSection(context: Context){
             composable("Self") { Bottom_Self() }
             composable("Groups") { Bottom_Groups() }
             composable("Notification") { Bottom_Notification() }
-            composable("Account") { Bottom_Account() }
+            composable("Account") { Bottom_Settings() }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.isarthaksharma.splitespree.service
+package com.isarthaksharma.splitespree.model.Authentication
 
 import android.app.Activity
 import android.content.Context
@@ -12,7 +12,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import com.isarthaksharma.splitespree.R
-import com.isarthaksharma.splitespree.model.Authentication.AuthResponse
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -25,7 +24,6 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.isarthaksharma.splitespree.model.Authentication.SessionManager
 
 
 class AuthenticationManager(private val context: Context) {

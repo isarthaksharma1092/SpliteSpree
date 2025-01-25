@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.isarthaksharma.splitespree.R
-import com.isarthaksharma.splitespree.model.Authentication.BottomNavigationItemData
 
 val items:List<BottomNavigationItemData> = listOf(
     BottomNavigationItemData(

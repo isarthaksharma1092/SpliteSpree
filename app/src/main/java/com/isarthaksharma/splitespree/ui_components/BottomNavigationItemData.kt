@@ -1,4 +1,4 @@
-package com.isarthaksharma.splitespree.model.Authentication
+package com.isarthaksharma.splitespree.ui_components
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
