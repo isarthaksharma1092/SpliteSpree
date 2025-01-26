@@ -16,4 +16,13 @@ interface PersonalDAO {
 
     @Delete
     suspend fun removePersonalExpense(expense: PersonalDataClass)
+
+    @Query("SELECT SUM(ExpenseAmt) FROM PersonalDataClass WHERE strftime('%Y-%m-%d', ExpenseDate / 1000, 'unixepoch') = strftime('%Y-%m-%d', 'now')")
+    fun getPersonalTodayExpense(): Flow<Long?>
+
+    @Query("SELECT Sum(ExpenseAmt) FROM PersonalDataClass WHERE strftime('%Y-%m', ExpenseDate / 1000, 'unixepoch') = strftime('%Y-%m', 'now')")
+    fun getPersonalMonthExpense(): Flow<Long?>
+
+    @Query("Select Sum(ExpenseAmt) FROM PersonalDataClass ")
+    fun getPersonalAllExpense(): Flow<Long?>
 }

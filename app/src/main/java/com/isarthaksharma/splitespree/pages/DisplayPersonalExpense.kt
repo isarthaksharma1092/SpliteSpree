@@ -15,9 +15,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.isarthaksharma.splitespree.DataBase.PersonalDataClass
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun DisplayPersonalExpense(expense: PersonalDataClass) {
+    val readableDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(expense.ExpenseDate))
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,28 +34,31 @@ fun DisplayPersonalExpense(expense: PersonalDataClass) {
         Box{
             Column {
                 Row {
+                    // Expense Name
                     Text(
                         text = expense.ExpenseName,
                         color = MaterialTheme.colorScheme.background,
                         fontSize = 25.sp,
                         modifier = Modifier.weight(.1f),
                         fontWeight = FontWeight.Bold
-
                     )
+                    // Expense Date
                     Text(
-                        text = expense.ExpenseDate,
+                        text = readableDate,
                         color = MaterialTheme.colorScheme.background,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Light
                     )
                 }
+                // Expense Amount
                 Text(
                     text = "₹ ${expense.ExpenseAmt}",
                     color = MaterialTheme.colorScheme.background,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium
                 )
-                if (expense.ExpenseMsg.isNotBlank()) {
+                // Expense Msg(Optional)
+                if (expense.ExpenseMsg?.isNotBlank() == true) {
                     Text(
                         text = expense.ExpenseMsg,
                         color = MaterialTheme.colorScheme.background,

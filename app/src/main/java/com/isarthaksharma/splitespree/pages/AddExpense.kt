@@ -33,6 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,13 +48,13 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
     var expenseState by remember { mutableStateOf("") }
     var amountState by remember { mutableStateOf("") }
     var msgState by remember { mutableStateOf("") }
-    val selectedDate = remember { mutableStateOf(dateFormat.format(mCalendar.time)) }
+    val selectedDate = remember { mutableStateOf(System.currentTimeMillis())  }
 
     val datePickerDialog = DatePickerDialog(
         context,
         { _, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance().apply { set(year, month, dayOfMonth) }
-            selectedDate.value = dateFormat.format(calendar.time)
+            selectedDate.value = calendar.timeInMillis
         },
         mCalendar.get(Calendar.YEAR),
         mCalendar.get(Calendar.MONTH),
@@ -103,7 +104,8 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                 },
                 modifier = Modifier.padding(16.dp),
             ) {
-                Text(text = selectedDate.value)
+                val formattedDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selectedDate.value))
+                Text(text = formattedDate)
             }
 
             Button(
@@ -117,9 +119,9 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                     else{
                         val expense = PersonalDataClass(
                             ExpenseName = expenseState,
-                            ExpenseAmt = amountState,
+                            ExpenseAmt = amountState.toDoubleOrNull()!!,
                             ExpenseMsg = msgState,
-                            ExpenseDate = selectedDate.value.toString(),
+                            ExpenseDate = selectedDate.value.toLong(),
                         )
                         CoroutineScope(Dispatchers.IO).launch {
                             PersonalDatabase.getDatabase(
