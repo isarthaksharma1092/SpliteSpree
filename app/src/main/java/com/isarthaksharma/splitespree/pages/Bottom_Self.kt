@@ -40,7 +40,7 @@ fun Bottom_Self() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onBackground),
+            .background(MaterialTheme.colorScheme.background),
         ) {
         Column(
             modifier = Modifier
@@ -59,7 +59,6 @@ fun Bottom_Self() {
                 }
             }
         }
-
 
         // Floating Action Button
         FloatingActionButton(

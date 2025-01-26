@@ -53,7 +53,7 @@ fun BottomNavigationBar(navController: NavHostController){
     val currentDestination by navController.currentBackStackEntryAsState()
 
     NavigationBar {
-        Row(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+        Row(modifier = Modifier.background(MaterialTheme.colorScheme.background.copy(alpha = 0.2f))) {
             items.forEach{ item ->
                 if (currentDestination != null) {
                     NavigationBarItem(

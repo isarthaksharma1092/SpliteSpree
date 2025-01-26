@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Note
+import androidx.compose.material.icons.automirrored.filled.NoteAdd
 import androidx.compose.material.icons.filled.Money
-import androidx.compose.material.icons.filled.ProductionQuantityLimits
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -72,7 +72,7 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
-                leadingIcon = { Icon(Icons.Default.ProductionQuantityLimits, contentDescription = null) }
+                leadingIcon = { Icon(Icons.Default.ShoppingCart, contentDescription = null) }
             )
 
             OutlinedTextField(
@@ -93,7 +93,7 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
-                leadingIcon = { Icon(Icons.AutoMirrored.Filled.Note, contentDescription = null) }
+                leadingIcon = { Icon(Icons.AutoMirrored.Filled.NoteAdd, contentDescription = null) }
             )
 
             Button(

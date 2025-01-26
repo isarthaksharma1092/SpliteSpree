@@ -22,19 +22,17 @@ fun DisplayPersonalExpense(expense: PersonalDataClass) {
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                color = MaterialTheme.colorScheme.background,
+                color = MaterialTheme.colorScheme.onBackground,
                 shape = RoundedCornerShape(14.dp)
             )
             .padding(10.dp)
-
-
     ) {
         Box{
             Column {
                 Row {
                     Text(
                         text = expense.ExpenseName,
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.background,
                         fontSize = 25.sp,
                         modifier = Modifier.weight(.1f),
                         fontWeight = FontWeight.Bold
@@ -42,21 +40,21 @@ fun DisplayPersonalExpense(expense: PersonalDataClass) {
                     )
                     Text(
                         text = expense.ExpenseDate,
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.background,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Light
                     )
                 }
                 Text(
                     text = "₹ ${expense.ExpenseAmt}",
-                    color = MaterialTheme.colorScheme.onBackground,
+                    color = MaterialTheme.colorScheme.background,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium
                 )
                 if (expense.ExpenseMsg.isNotBlank()) {
                     Text(
                         text = expense.ExpenseMsg,
-                        color = MaterialTheme.colorScheme.onBackground,
+                        color = MaterialTheme.colorScheme.background,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Light
                     )
