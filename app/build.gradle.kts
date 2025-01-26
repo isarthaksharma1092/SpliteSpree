@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.googleid)
     implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.ui.test.android)
+    implementation(libs.androidx.foundation.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -96,6 +98,4 @@ dependencies {
     implementation ("androidx.room:room-ktx:$room_version")
 
     implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
-
-
 }

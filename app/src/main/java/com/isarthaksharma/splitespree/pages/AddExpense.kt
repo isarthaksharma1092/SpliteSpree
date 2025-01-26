@@ -19,6 +19,7 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -44,17 +45,16 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
     val mCalendar = Calendar.getInstance()
     val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-
     var expenseState by remember { mutableStateOf("") }
     var amountState by remember { mutableStateOf("") }
     var msgState by remember { mutableStateOf("") }
-    val selectedDate = remember { mutableStateOf(System.currentTimeMillis())  }
+    val selectedDate = remember { mutableLongStateOf(System.currentTimeMillis())  }
 
     val datePickerDialog = DatePickerDialog(
         context,
         { _, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance().apply { set(year, month, dayOfMonth) }
-            selectedDate.value = calendar.timeInMillis
+            selectedDate.longValue = calendar.timeInMillis
         },
         mCalendar.get(Calendar.YEAR),
         mCalendar.get(Calendar.MONTH),
@@ -121,12 +121,16 @@ fun AddExpense(sheetState: SheetState, onDismiss: () -> Unit) {
                             ExpenseName = expenseState,
                             ExpenseAmt = amountState.toDoubleOrNull()!!,
                             ExpenseMsg = msgState,
-                            ExpenseDate = selectedDate.value.toLong(),
+                            ExpenseDate = selectedDate.longValue,
                         )
                         CoroutineScope(Dispatchers.IO).launch {
+                            // Adding to Room DB
                             PersonalDatabase.getDatabase(
                                 context = context
                             ).PersonalDAO().addPersonalExpense(expense)
+
+                            // Sending Notification
+
                         }
                         onDismiss()
                     }

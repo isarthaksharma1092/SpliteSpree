@@ -30,9 +30,18 @@ import com.isarthaksharma.splitespree.R
 @Composable
 fun Bottom_Groups() {
     val context = LocalContext.current
+    Text(
+        text = "Group",
+        fontFamily = FontFamily(Font(R.font.doto, FontWeight.Bold)),
+        color = MaterialTheme.colorScheme.onBackground,
+        fontSize = 32.sp,
+        modifier = Modifier.padding(top = 10.dp, start = 10.dp)
+    )
+
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .padding(10.dp)
             .background(MaterialTheme.colorScheme.background),
     ) {
         Column(
@@ -43,15 +52,11 @@ fun Bottom_Groups() {
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            Text(
-                text = "Group",
-                fontFamily = FontFamily(Font(R.font.doto, FontWeight.Bold)),
-                color = MaterialTheme.colorScheme.onBackground,
-                fontSize = 32.sp
-            )
+
 
         }
 
+        // Floating Action Button
         FloatingActionButton(
             onClick = { Toast.makeText(context, "Create Group", Toast.LENGTH_SHORT).show() },
             modifier = Modifier
@@ -68,15 +73,18 @@ fun Bottom_Groups() {
                     text = "Create Group",
                     style = MaterialTheme.typography.bodySmall,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.align(Alignment.CenterVertically).padding(horizontal = 3.dp)
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(horizontal = 3.dp)
                 )
                 Icon(
                     Icons.Filled.GroupAdd,
                     contentDescription = "Create Group",
-                    modifier = Modifier.align(Alignment.CenterVertically).padding(horizontal = 3.dp)
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(horizontal = 3.dp)
                 )
             }
         }
     }
-
 }
